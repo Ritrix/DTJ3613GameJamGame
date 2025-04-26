@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     bool isInvincible;
     float damageCooldown;
 
+
+    bool blocking;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +40,7 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
         isAttacking = false;
         currentHealth = maxHealth;
+        blocking = false;
     }
 
     // Update is called once per frame
@@ -48,15 +52,21 @@ public class PlayerController : MonoBehaviour
         if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             animator.SetBool("isWalking", true);
+            blocking = false;
         }
         else
         {
             animator.SetBool("isWalking", false);
+            if (!isAttacking)
+            {
+                blocking = true;
+            }
         }
 
         // change player direction
         if (!isAttacking)
         {
+            blocking = false;
             if (move.x > 0.0f)
             {
                 playerVisual.transform.localScale = originalPlayerScale; // have player face right
@@ -134,6 +144,17 @@ public class PlayerController : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
+
+        if(currentHealth < 0)
+        {
+            Debug.Log("Player died!");
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+    Application.Quit();
+#endif
+        }
     }
 
     /// <summary>
@@ -142,7 +163,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "basicEnemyAttackHitbox")
+        if (collision.gameObject.tag == "basicEnemyAttackHitbox" && blocking == false)
         {
             changeHealth(-1);
             animator.SetTrigger("playerHurt");
