@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Attacks")]
     public InputAction lightAttackAction;
+    [SerializeField] private Animator animator;
 
     bool isAttacking;
     int typeAttack; // type of attack: Not attacking = 0, Light = 1, medium = 2, special = 3
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        animator = GetComponent<Animator>();
         moveAction.Enable();
         lightAttackAction.Enable();
         playerRigidBody = GetComponent<Rigidbody2D>();
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
         // stop moving when light attack pressed
         if (lightAttackAction.IsPressed() && typeAttack < 1)
         {
+            animator.SetTrigger("isLAttackingSTrigger");
             isAttacking = true;
             typeAttack = 1;
             if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
