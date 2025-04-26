@@ -136,4 +136,17 @@ public class PlayerController : MonoBehaviour
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
     }
 
+    /// <summary>
+    /// check if player is hit
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "basicEnemyAttackHitbox")
+        {
+            changeHealth(-1);
+            animator.SetTrigger("playerHurt");
+        }
+    }
+
 }
