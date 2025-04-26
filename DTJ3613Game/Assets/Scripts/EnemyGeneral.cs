@@ -36,7 +36,7 @@ public class EnemyGeneral : MonoBehaviour
 
         distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < aggroDistance)
+        if (distance < aggroDistance && !stun)
         {
             if (distance > separationDistance + 0.5f && !isAttacking) // If still a bit far, move normally
             {
@@ -94,6 +94,10 @@ public class EnemyGeneral : MonoBehaviour
         if (message == "stunEnd")
         {
             stun = false;
+        }
+        if (message == "deleteEnemy")
+        {
+            Destroy(gameObject);
         }
 
 
@@ -160,7 +164,8 @@ public class EnemyGeneral : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            stun = true;
+            m_Animator.SetTrigger("isDead");
         }
     }
 }
