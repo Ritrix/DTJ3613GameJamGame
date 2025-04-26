@@ -8,6 +8,7 @@ public class EnemyGeneral : MonoBehaviour
     public GameObject player;
     private Coroutine attackCoroutine;
     private bool isAttacking = false;
+    private bool stun = false;
 
     [Header("movement")]
     public float speed = 5.0f;
@@ -88,12 +89,26 @@ public class EnemyGeneral : MonoBehaviour
 
     }
 
+    public void alertObservers(string message)
+    {
+        if (message == "stunEnd")
+        {
+            stun = false;
+        }
+
+
+    }
+
     private IEnumerator AttackAfterDelay()
     {
         isAttacking = true;
         yield return new WaitForSeconds(0.5f);
 
-        m_Animator.SetTrigger("isAttacking");
+        if (!stun)
+        {
+            m_Animator.SetTrigger("isAttacking");
+        }
+        
 
         
         yield return new WaitForSeconds(1.0f); // cooldown between attacks
@@ -136,13 +151,14 @@ public class EnemyGeneral : MonoBehaviour
     {
         if (amount < 0)
         {
+            stun = true;
             m_Animator.SetTrigger(HIT_PARAM);
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
+        UIHandler.instance.SetEnemyHealthValue(currentHealth / (float)maxHealth);
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

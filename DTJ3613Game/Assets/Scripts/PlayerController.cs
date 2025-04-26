@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
 
-        if(currentHealth < 0)
+        if(currentHealth <= 0)
         {
             Debug.Log("Player died!");
 
