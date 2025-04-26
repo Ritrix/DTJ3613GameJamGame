@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public InputAction lightAttackAction;
 
     bool isAttacking;
+    int typeAttack; // type of attack: Not attacking = 0, Light = 1, medium = 2, special = 3
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,9 +31,10 @@ public class PlayerController : MonoBehaviour
         move = moveAction.ReadValue<Vector2>();
 
         // stop moving when light attack pressed
-        if (lightAttackAction.IsPressed())
+        if (lightAttackAction.IsPressed() && typeAttack < 1)
         {
             isAttacking = true;
+            typeAttack = 1;
             if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
             {
                 move.x = 0.0f;
@@ -41,10 +43,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// alert method to be used when the animation for an attack by the player has ended. ensure to update this when attacks are added, and to reference this at the end of an animation by adding an animation event to the animations (maybe edit this for combos)
+    /// </summary>
+    /// <param name="message"></param>
     public void alertObservers(string message)
     {
         if (message == "LightAttackEnd")
+        {
             isAttacking = false;
+            typeAttack = 0;
+        }
+            
+
     }
 
     private void FixedUpdate()
