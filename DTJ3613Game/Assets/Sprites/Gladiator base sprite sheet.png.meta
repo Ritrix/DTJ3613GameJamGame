@@ -156,11 +156,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 811
+        y: 619
         width: 257
-        height: 246
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 438
+      alignment: 9
+      pivot: {x: 0.5, y: -0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -174,37 +174,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gladiator base sprite sheet_1
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 619
-        width: 129
-        height: 248
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 949762fa0c95f2ed0800000000000000
-      internalID: -2436630189277021879
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Gladiator base sprite sheet_2
       rect:
         serializedVersion: 2
         x: 467
         y: 631
-        width: 327
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 342
+        height: 375
+      alignment: 9
+      pivot: {x: 0.5, y: -0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -218,37 +196,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gladiator base sprite sheet_3
-      rect:
-        serializedVersion: 2
-        x: 507
-        y: 811
-        width: 300
-        height: 194
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7b950702334d6f420800000000000000
-      internalID: 2663549545688881591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Gladiator base sprite sheet_4
       rect:
         serializedVersion: 2
         x: 1004
-        y: 794
+        y: 596
         width: 257
-        height: 246
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 444
+      alignment: 9
+      pivot: {x: 0.5, y: -0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,59 +218,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gladiator base sprite sheet_5
-      rect:
-        serializedVersion: 2
-        x: 1028
-        y: 597
-        width: 176
-        height: 253
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ac64369850a126d80800000000000000
-      internalID: -8259010155561924918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gladiator base sprite sheet_6
-      rect:
-        serializedVersion: 2
-        x: 1458
-        y: 764
-        width: 290
-        height: 241
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47661c6740409fd30800000000000000
-      internalID: 4465604922733323892
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Gladiator base sprite sheet_7
       rect:
         serializedVersion: 2
-        x: 1498
+        x: 1460
         y: 593
-        width: 292
-        height: 232
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 330
+        height: 413
+      alignment: 9
+      pivot: {x: 0.5, y: -0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -328,28 +240,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gladiator base sprite sheet_8
-      rect:
-        serializedVersion: 2
-        x: 388
-        y: 738
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0d28294682df82f70800000000000000
-      internalID: 9162851791813116624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Gladiator base sprite sheet_9
       rect:
         serializedVersion: 2
@@ -357,8 +247,8 @@ TextureImporter:
         y: 71
         width: 297
         height: 454
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: -0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -379,8 +269,8 @@ TextureImporter:
         y: 49
         width: 425
         height: 367
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: -0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -398,11 +288,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 944
-        y: 197
+        y: 32
         width: 347
-        height: 260
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 425
+      alignment: 9
+      pivot: {x: 0.5, y: -0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,28 +306,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gladiator base sprite sheet_12
-      rect:
-        serializedVersion: 2
-        x: 1055
-        y: 32
-        width: 218
-        height: 274
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2fe197946e63b4d10800000000000000
-      internalID: 2110841213056261874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Gladiator base sprite sheet_13
       rect:
         serializedVersion: 2
@@ -445,8 +313,8 @@ TextureImporter:
         y: 69
         width: 465
         height: 218
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: -0.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -463,7 +331,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b13db3fac0f395244bcb3b7844e6b4af
     internalID: 0
     vertices: []
     indices: 
@@ -472,7 +340,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Gladiator base sprite sheet_0: 3252099152446246221
+      Gladiator base sprite sheet_1: -2436630189277021879
+      Gladiator base sprite sheet_10: -5336411745575683967
+      Gladiator base sprite sheet_11: -3927511964891652882
+      Gladiator base sprite sheet_12: 2110841213056261874
+      Gladiator base sprite sheet_13: 2682907320936829659
+      Gladiator base sprite sheet_14: 821526268
+      Gladiator base sprite sheet_2: -6729552171444467695
+      Gladiator base sprite sheet_3: 2663549545688881591
+      Gladiator base sprite sheet_4: 8828461222487856518
+      Gladiator base sprite sheet_5: -8259010155561924918
+      Gladiator base sprite sheet_6: 4465604922733323892
+      Gladiator base sprite sheet_7: 2709955184625723460
+      Gladiator base sprite sheet_8: 9162851791813116624
+      Gladiator base sprite sheet_9: 4765146744590641907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

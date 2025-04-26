@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D playerRigidBody;
     Vector2 move;
 
+
     [Header("Attacks")]
     public InputAction lightAttackAction;
     [SerializeField] private Animator animator;
     bool isAttacking;
     int typeAttack; // type of attack: Not attacking = 0, Light = 1, medium = 2, special = 3
+    [SerializeField] private Transform playerVisual;
+    private Vector3 originalPlayerScale; // keeping track of the original player scale as we flip him around
 
     [Header("Health")]
     public int maxHealth = 5;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        originalPlayerScale = playerVisual.transform.localScale;
         animator = GetComponent<Animator>();
         moveAction.Enable();
         lightAttackAction.Enable();
@@ -40,6 +44,28 @@ public class PlayerController : MonoBehaviour
     {
         // set move vector to current input
         move = moveAction.ReadValue<Vector2>();
+        // if moving set move animation to true
+        if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+        // change player direction
+        if (!isAttacking)
+        {
+            if (move.x > 0.0f)
+            {
+                playerVisual.transform.localScale = originalPlayerScale; // have player face right
+            }
+            else if (move.x < 0.0f)
+            {
+                playerVisual.transform.localScale = new Vector3(-originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
+            }
+        }
 
         // stop moving when light attack pressed
         if (lightAttackAction.IsPressed() && typeAttack < 1)
@@ -101,6 +127,7 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
+            animator.SetTrigger("playerHurt");
             isInvincible = true;
             damageCooldown = timeInvincible;
         }
