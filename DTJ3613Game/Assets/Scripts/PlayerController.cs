@@ -12,9 +12,17 @@ public class PlayerController : MonoBehaviour
     [Header("Attacks")]
     public InputAction lightAttackAction;
     [SerializeField] private Animator animator;
-
     bool isAttacking;
     int typeAttack; // type of attack: Not attacking = 0, Light = 1, medium = 2, special = 3
+
+    [Header("Health")]
+    public int maxHealth = 5;
+    int currentHealth;
+    public int health { get { return currentHealth; } }
+    // damage cooldown
+    public float timeInvincible = 2.0f;
+    bool isInvincible;
+    float damageCooldown;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +32,7 @@ public class PlayerController : MonoBehaviour
         lightAttackAction.Enable();
         playerRigidBody = GetComponent<Rigidbody2D>();
         isAttacking = false;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -44,12 +53,21 @@ public class PlayerController : MonoBehaviour
                 move.y = 0.0f;
             }
         }
+
+        if (isInvincible)
+        {
+            damageCooldown -= Time.deltaTime;
+            if (damageCooldown < 0)
+            {
+                isInvincible = false;
+            }
+        }
     }
 
     /// <summary>
     /// alert method to be used when the animation for an attack by the player has ended. ensure to update this when attacks are added, and to reference this at the end of an animation by adding an animation event to the animations (maybe edit this for combos)
     /// </summary>
-    /// <param name="message"></param>
+    /// <param name="message"> accepts a message from the animation to trigger something here </param>
     public void alertObservers(string message)
     {
         if (message == "LightAttackEnd")
@@ -63,8 +81,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        
         // move player character
         if (!isAttacking)
         {
@@ -73,5 +89,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// changes player character health
+    /// </summary>
+    /// <param name="amount"></param>
+    public void changeHealth(int amount)
+    {
+        if (amount < 0)
+        {
+            if (isInvincible)
+            {
+                return;
+            }
+            isInvincible = true;
+            damageCooldown = timeInvincible;
+        }
+
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
+    }
 
 }
