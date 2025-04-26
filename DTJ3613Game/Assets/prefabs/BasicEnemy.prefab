@@ -178,7 +178,7 @@ MonoBehaviour:
   aggroDistance: 16
   separationDistance: 2
   reachThreshold: 0.05
-  maxHealth: 5
+  maxHealth: 3
 --- !u!50 &6482853763801103448
 Rigidbody2D:
   serializedVersion: 5
