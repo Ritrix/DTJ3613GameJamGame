@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 619a91d9e5041934b88b31bcdca1cba1
+guid: 8dd420cbf72137a4981bad9ad5840cc9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6408945547616601976
-    second: idle sheild_0
+      213: -1801636142970914546
+    second: basicAttack1_0
+  - first:
+      213: -1179626453291520632
+    second: basicAttack1_1
+  - first:
+      213: -7013757545127838504
+    second: basicAttack1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -109,40 +115,71 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle sheild_0
+      name: basicAttack1_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 24
-        width: 312
-        height: 397
-      alignment: 9
-      pivot: {x: 0.5, y: -0.05}
+        x: 4
+        y: 43
+        width: 505
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 877428ef40621f850800000000000000
-      internalID: 6408945547616601976
+      spriteID: e09b6b3397d4ff6e0800000000000000
+      internalID: -1801636142970914546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basicAttack1_1
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 309
+        width: 109
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88da7eb9dff11afe0800000000000000
+      internalID: -1179626453291520632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basicAttack1_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 3
+        width: 144
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dc70f55ca02aae90800000000000000
+      internalID: -7013757545127838504
       vertices: []
       indices: 
       edges: []
@@ -151,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d2ecfa7a36bee364a924efbc86b8aa52
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      idle sheild_0: 6408945547616601976
+      basicAttack1_0: -1801636142970914546
+      basicAttack1_1: -1179626453291520632
+      basicAttack1_2: -7013757545127838504
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
