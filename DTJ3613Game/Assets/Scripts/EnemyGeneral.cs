@@ -22,7 +22,7 @@ public class EnemyGeneral : MonoBehaviour
     private const string PLAYER_LIGHT1_HITBOX = "playerHitboxLight1";
 
     [Header("Health")]
-    public int maxHealth = 5;
+    public int maxHealth = 3;
     int currentHealth;
 
     private void Start()
