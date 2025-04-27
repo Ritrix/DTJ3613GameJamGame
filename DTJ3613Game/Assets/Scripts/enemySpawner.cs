@@ -4,6 +4,7 @@ using System.Collections;
 public class enemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject ZealotPrefab;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform[] spawnPoints;
     private int enemiesToSpawn = 5;
@@ -75,17 +76,35 @@ public class enemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
-
         Vector3 randomOffset = new Vector3(0, Random.Range(-3f, 3f), 0);
 
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position + randomOffset, Quaternion.identity);
+        GameObject selectedPrefab;
+
+        if (GameManager.Instance.currentWave > 0)
+        {
+            // After wave 9, randomly pick between A and B
+            if (Random.value > 0.5f)
+            {
+                selectedPrefab = enemyPrefab;
+            }
+            else
+            {
+                selectedPrefab = ZealotPrefab;
+            }
+        }
+        else
+        {
+            // Before wave 10, always spawn Type A
+            selectedPrefab = enemyPrefab;
+        }
+
+        GameObject newEnemy = Instantiate(selectedPrefab, spawnPoint.position + randomOffset, Quaternion.identity);
 
         // Give enemy the player reference
         EnemyGeneral enemy = newEnemy.GetComponent<EnemyGeneral>();
         if (enemy != null)
         {
-            enemy.SetPlayer(player); // You might need to add player reference inside GameManager!
+            enemy.SetPlayer(player);
         }
     }
 }

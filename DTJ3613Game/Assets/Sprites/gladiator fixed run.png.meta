@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: d3d2b5cd8788b3f4680d5c12c5eac29d
+guid: 8894bb848b0f33d4282fb512fd6477ba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5257855911740232254
-    second: zelot_0
+      213: 4617543346002399993
+    second: gladiator fixed run_0
   - first:
-      213: 2920959505158097702
-    second: zelot_1
+      213: -2059068268364644756
+    second: gladiator fixed run_1
   - first:
-      213: 7698623435421627307
-    second: zelot_2
+      213: 4962678269696214757
+    second: gladiator fixed run_2
   - first:
-      213: 4013207033688096036
-    second: zelot_3
+      213: -1347363112698110379
+    second: gladiator fixed run_3
   - first:
-      213: -1706135581357316079
-    second: zelot_4
+      213: -5659153337424493754
+    second: gladiator fixed run_4
   - first:
-      213: -3641622479822992858
-    second: zelot_5
+      213: 363063987449321570
+    second: gladiator fixed run_5
   - first:
-      213: -965400037719135577
-    second: zelot_6
+      213: -730861019809962166
+    second: gladiator fixed run_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,155 +131,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zelot_0
+      name: gladiator fixed run_0
       rect:
         serializedVersion: 2
-        x: 162
-        y: 693
-        width: 207
-        height: 424
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2cd2984d7e75807b0800000000000000
-      internalID: -5257855911740232254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zelot_1
-      rect:
-        serializedVersion: 2
-        x: 402
-        y: 704
-        width: 201
-        height: 418
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 62bcf3ca135598820800000000000000
-      internalID: 2920959505158097702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zelot_2
-      rect:
-        serializedVersion: 2
-        x: 931
-        y: 707
-        width: 339
-        height: 400
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ba3bdc7b93107da60800000000000000
-      internalID: 7698623435421627307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zelot_3
-      rect:
-        serializedVersion: 2
-        x: 1356
-        y: 986
-        width: 132
-        height: 49
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 42df315c886c1b730800000000000000
-      internalID: 4013207033688096036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zelot_4
-      rect:
-        serializedVersion: 2
-        x: 1736
-        y: 684
-        width: 8
-        height: 38
+        x: 67
+        y: 663
+        width: 258
+        height: 246
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 118ea8e6ab69258e0800000000000000
-      internalID: -1706135581357316079
+      spriteID: 9f21179553fc41040800000000000000
+      internalID: 4617543346002399993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zelot_5
+      name: gladiator fixed run_1
       rect:
         serializedVersion: 2
-        x: 312
-        y: 196
-        width: 350
-        height: 302
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 119
+        y: 471
+        width: 129
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 62ac21416ab567dc0800000000000000
-      internalID: -3641622479822992858
+      spriteID: c6eb8dfb158bc63e0800000000000000
+      internalID: -2059068268364644756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zelot_6
+      name: gladiator fixed run_2
       rect:
         serializedVersion: 2
-        x: 756
-        y: 195
-        width: 344
-        height: 291
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 454
+        y: 501
+        width: 341
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7aa2a95d7c53a92f0800000000000000
-      internalID: -965400037719135577
+      spriteID: 5e60bc7c799fed440800000000000000
+      internalID: 4962678269696214757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gladiator fixed run_3
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 649
+        width: 263
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55e1a2c33643d4de0800000000000000
+      internalID: -1347363112698110379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gladiator fixed run_4
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 483
+        width: 167
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 643c859e506a671b0800000000000000
+      internalID: -5659153337424493754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gladiator fixed run_5
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 615
+        width: 287
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26857a2e5ccd90500800000000000000
+      internalID: 363063987449321570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gladiator fixed run_6
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 436
+        width: 292
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a472c0656c57bd5f0800000000000000
+      internalID: -730861019809962166
       vertices: []
       indices: 
       edges: []
@@ -288,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 970febfdeb1262a4b9f28a6064c5c362
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -297,14 +297,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      zelot_0: -5257855911740232254
-      zelot_1: 2920959505158097702
-      zelot_2: 7698623435421627307
-      zelot_3: 4013207033688096036
-      zelot_4: -1706135581357316079
-      zelot_5: -3641622479822992858
-      zelot_6: -965400037719135577
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1694,6 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1310536290122931012, guid: f8c7448e1815651428c7530937ede115, type: 3}
+  ZealotPrefab: {fileID: 1310536290122931012, guid: b5dbdfa67def5e3448dbac751dba43f8, type: 3}
   player: {fileID: 761239292}
   spawnPoints:
   - {fileID: 1301660642}
