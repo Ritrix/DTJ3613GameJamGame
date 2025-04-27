@@ -20,14 +20,15 @@ public class ShopController : MonoBehaviour
 
     private void Start()
     {
-        increaseHealthPriceTextBox = GetComponent<TMP_Text>();
-        increaseSpeedPriceTextBox = GetComponent<TMP_Text>();
-        increaseDamagePriceTextBox = GetComponent<TMP_Text>();
-        gold = GetComponent<TMP_Text>();
+        increaseHealthPriceTextBox = GameObject.Find("IncreaseHealthPrice").GetComponent<TMP_Text>();
+        increaseSpeedPriceTextBox = GameObject.Find("IncreaseSpeedPrice").GetComponent<TMP_Text>();
+        increaseDamagePriceTextBox = GameObject.Find("IncreaseDamagePrice").GetComponent<TMP_Text>();
+        gold = GameObject.Find("GoldAmount").GetComponent<TMP_Text>();
 
         HealthIncreaseCost = 75 * GameManager.Instance.currentPurchaseMod;
         SpeedIncreaseCost = 75 * GameManager.Instance.currentPurchaseMod;
         DamageIncreaseCost = 150 * GameManager.Instance.currentPurchaseMod;
+
         increaseHealthPriceTextBox.text = HealthIncreaseCost.ToString();
         increaseSpeedPriceTextBox.text = SpeedIncreaseCost.ToString();
         increaseDamagePriceTextBox.text = DamageIncreaseCost.ToString();

@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int playerCurrentMaxSpeed = 8;
     public int playerCurrentMaxDamage = 0;
 
-    public int currentPurchaseMod = 0;
+    public int currentPurchaseMod = 1;
 
     private void Awake()
     {
