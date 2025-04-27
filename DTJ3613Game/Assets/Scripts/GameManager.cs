@@ -31,4 +31,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("ShopScene");
     }
+
+    public void AddGold(int amount)
+    {
+        playerGold += amount;
+        Debug.Log("Gold: " + playerGold);
+    }
 }

@@ -10,6 +10,7 @@ public class EnemyGeneral : MonoBehaviour
     private Coroutine attackCoroutine;
     private bool isAttacking = false;
     private bool stun = false;
+    public int baseGoldReward = 1;
 
     [Header("movement")]
     public float speed = 5.0f;
@@ -173,6 +174,7 @@ public class EnemyGeneral : MonoBehaviour
         {
             stun = true;
             m_Animator.SetTrigger(HIT_PARAM);
+            ComboSystem.Instance.RegisterHit();
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
@@ -181,6 +183,8 @@ public class EnemyGeneral : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            int goldToGive = baseGoldReward * Mathf.Max(ComboSystem.Instance.GetCurrentCombo(), 1);
+            GameManager.Instance.AddGold(goldToGive);
             stun = true;
             m_Animator.SetTrigger("isDead");
             m_Animator.SetBool("dying", true);

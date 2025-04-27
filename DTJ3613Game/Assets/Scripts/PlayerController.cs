@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     bool isInvincible;
     float damageCooldown;
 
-
+    public int currentComnbo = 0; // current combo stage
 
     private bool stun;
 
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         lightAttackStage = 0;
         animator.SetBool("dying", false);
+        currentComnbo = 0;
     }
 
     // Update is called once per frame
