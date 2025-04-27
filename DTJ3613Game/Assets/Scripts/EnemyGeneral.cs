@@ -34,6 +34,27 @@ public class EnemyGeneral : MonoBehaviour
 
     private int damageModifier;
 
+    [Header("Misc")]
+    public AudioClip[] hurtSounds;
+    public AudioSource audioSource;
+
+    [Header("Pitch Variation")]
+    public float minPitch = 0.95f;
+    public float maxPitch = 1.05f;
+
+    public void PlaySound(string sound)
+    {
+        if (audioSource != null)
+        {
+            if (sound == "hurt" && hurtSounds.Length > 0)
+            {
+                int rand = Random.Range(0, hurtSounds.Length); // Pick random sound
+                audioSource.pitch = Random.Range(minPitch, maxPitch);   // Randomize pitch
+                audioSource.PlayOneShot(hurtSounds[rand]);
+            }
+        }
+    }
+
     public void SetPlayer(GameObject playerObject)
     {
         player = playerObject;
@@ -41,6 +62,10 @@ public class EnemyGeneral : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance.currentWave > 20)
+        {
+            maxHealth += (int)(GameManager.Instance.currentWave / 5);
+        }
         damageModifier = GameManager.Instance.playerCurrentMaxDamage;
         plebNumber = Random.Range(1, 1000);
         currentHealth = maxHealth;
@@ -117,7 +142,10 @@ public class EnemyGeneral : MonoBehaviour
             Destroy(gameObject);
             enemySpawner.enemiesDefeated++;
         }
-
+        if(message == "hurtSound")
+        {
+            PlaySound("hurt");
+        }
 
     }
 

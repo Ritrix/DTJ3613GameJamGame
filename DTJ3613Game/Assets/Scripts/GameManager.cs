@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         playerCurrentMaxHealth = 5;
         playerCurrentMaxSpeed = 8;
         playerCurrentMaxDamage = 0;
+        currentPurchaseMod = 1;
         currentWave = 1;
         playerGold = 0;
         SceneManager.LoadScene("SampleScene");
@@ -59,19 +60,19 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseHealth(int amount)
     {
-        playerMaxHealth += amount;
+        playerCurrentMaxHealth += amount;
         Debug.Log("Player Max Health: " + playerMaxHealth);
     }
 
     public void IncreaseSpeed(int amount)
     {
-        playerSpeedMax += amount;
+        playerCurrentMaxSpeed += amount;
         Debug.Log("Player Speed: " + playerSpeedMax);
     }
 
     public void IncreaseDamage(int amount)
     {
-        playerDamageMax += amount;
+        playerCurrentMaxDamage += amount;
         Debug.Log("Player Damage: " + playerDamageMax);
     }
 }

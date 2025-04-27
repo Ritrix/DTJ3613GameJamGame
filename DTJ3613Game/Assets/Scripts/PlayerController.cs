@@ -33,15 +33,48 @@ public class PlayerController : MonoBehaviour
     public int currentComnbo = 0; // current combo stage
 
     private bool stun;
+    private bool canAttack = true; // can attack or not
 
+    [Header("Misc")]
+    public AudioClip[] whooshSounds;
+    public AudioClip[] hurtSounds;
+    public AudioClip deathSound;
+    public AudioSource audioSource;
+
+    [Header("Pitch Variation")]
+    public float minPitch = 0.95f;
+    public float maxPitch = 1.05f;
+
+    public void PlaySound(string sound)
+    {
+        if (audioSource != null )
+        {
+            if(sound == "whoosh" && whooshSounds.Length > 0)
+            {
+                int rand = Random.Range(0, whooshSounds.Length); // Pick random sound
+                audioSource.pitch = Random.Range(minPitch, maxPitch);   // Randomize pitch
+                audioSource.PlayOneShot(whooshSounds[rand]);
+            }
+            else if (sound == "hurt" && hurtSounds.Length > 0)
+            {
+                int rand = Random.Range(0, hurtSounds.Length); // Pick random sound
+                audioSource.pitch = Random.Range(minPitch, maxPitch);   // Randomize pitch
+                audioSource.PlayOneShot(hurtSounds[rand]);
+            }
+            else if (sound == "death")
+            {
+                audioSource.PlayOneShot(deathSound);
+            }
+        }
+    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         maxHealth = GameManager.Instance.playerCurrentMaxHealth;
         runSpeed = GameManager.Instance.playerCurrentMaxSpeed;
-
         originalPlayerScale = playerVisual.transform.localScale;
         animator = GetComponent<Animator>();
         moveAction.Enable();
@@ -52,7 +85,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         animator.SetBool("dying", false);
         currentComnbo = 0;
-
+        canAttack = true;
 
     }
 
@@ -65,8 +98,14 @@ public class PlayerController : MonoBehaviour
         // function to handle all movement related items and controls
         movement();
 
+
         // function to handle all attack related items and controls
-        attacks();
+        if (canAttack)
+        {
+            attacks();
+        }
+
+
 
         if (isInvincible)
         {
@@ -86,8 +125,10 @@ public class PlayerController : MonoBehaviour
     {
         if (message == "LightAttackEnd")
         {
+            canAttack = false;
             isAttacking = false;
             typeAttack = 0;
+            StartCoroutine(attackEndLag(0.1f));
         }
         else if(message == "stunEnd")
         {
@@ -102,21 +143,39 @@ public class PlayerController : MonoBehaviour
         }
         else if (message == "MediumAttackFend")
         {
+            canAttack = false;
             isAttacking = false;
             typeAttack = 0;
             animator.SetInteger("mediumAttackType", 0);
+            StartCoroutine(attackEndLag(0.5f));
         }
         else if (message == "MediumAttackNend")
         {
+            canAttack = false;
             isAttacking = false;
             typeAttack = 0;
             animator.SetInteger("mediumAttackType", 0);
+            StartCoroutine(attackEndLag(0.4f));
         }
         else if (message == "MediumAttackBend")
         {
+            canAttack = false;
             isAttacking = false;
             typeAttack = 0;
             animator.SetInteger("mediumAttackType", 0);
+            StartCoroutine(attackEndLag(0.2f));
+        }
+        else if (message == "deathSound")
+        {
+            PlaySound("death");
+        }
+        else if (message == "hurtSound")
+        {
+            PlaySound("hurt");
+        }
+        else if (message == "whooshSound")
+        {
+            PlaySound("whoosh");
         }
 
 
@@ -169,6 +228,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "basicEnemyAttackHitbox" && animator.GetBool("dying") == false)
         {
             changeHealth(-1);
+            animator.SetTrigger("playerHurt");
+        }
+        if (collision.gameObject.tag == "ZealotKnife" && animator.GetBool("dying") == false)
+        {
+            changeHealth(-3);
             animator.SetTrigger("playerHurt");
         }
     }
@@ -295,6 +359,12 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+
+    public IEnumerator attackEndLag(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canAttack = true;
+    }
 
     public IEnumerator Lunge(Vector2 direction, float distance, float duration)
     {
