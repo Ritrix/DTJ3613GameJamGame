@@ -80,7 +80,7 @@ public class enemySpawner : MonoBehaviour
 
         GameObject selectedPrefab;
 
-        if (GameManager.Instance.currentWave > 9)
+        if (GameManager.Instance.currentWave > 4)
         {
             // After wave 9, randomly pick between A and B
             if (Random.value > 0.5f)
