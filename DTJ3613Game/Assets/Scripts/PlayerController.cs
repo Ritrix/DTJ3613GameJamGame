@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -122,12 +123,7 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0)
         {
             Debug.Log("Player died!");
-
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-    Application.Quit();
-#endif
+            SceneManager.LoadScene("gameOver");
         }
     }
 
