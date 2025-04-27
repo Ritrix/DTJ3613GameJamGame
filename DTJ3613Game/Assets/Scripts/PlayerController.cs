@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,10 +10,11 @@ public class PlayerController : MonoBehaviour
     public InputAction moveAction;
     Rigidbody2D playerRigidBody;
     Vector2 move;
-
+    public bool mediumAttack = false;
 
     [Header("Attacks")]
     public InputAction lightAttackAction;
+    public InputAction MediumAttackAction;
     [SerializeField] private Animator animator;
     public bool isAttacking;
     int typeAttack; // type of attack: Not attacking = 0, Light = 1, medium = 2, special = 3
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         moveAction.Enable();
         lightAttackAction.Enable();
+        MediumAttackAction.Enable();
         playerRigidBody = GetComponent<Rigidbody2D>();
         isAttacking = false;
         currentHealth = maxHealth;
@@ -93,6 +96,24 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player died!");
             SceneManager.LoadScene("gameOver");
+        }
+        else if (message == "MediumAttackFend")
+        {
+            isAttacking = false;
+            typeAttack = 0;
+            animator.SetInteger("mediumAttackType", 0);
+        }
+        else if (message == "MediumAttackNend")
+        {
+            isAttacking = false;
+            typeAttack = 0;
+            animator.SetInteger("mediumAttackType", 0);
+        }
+        else if (message == "MediumAttackBend")
+        {
+            isAttacking = false;
+            typeAttack = 0;
+            animator.SetInteger("mediumAttackType", 0);
         }
 
 
@@ -189,10 +210,62 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+
     private void attacks()
     {
         if (!stun)
         {
+            if (MediumAttackAction.IsPressed() && typeAttack < 2)
+            {
+                isAttacking = true;
+                blocking = false;
+                typeAttack = 2;
+
+                if (!Mathf.Approximately(move.x, 0.0f))
+                {
+                    if (playerVisual.transform.localScale == originalPlayerScale) // is facing right
+                    {
+
+                        //1 = lunge, 2 = back attack, 3 = neutral attack
+                        if (move.x > 0.0f) // do lunge
+                        {
+                            animator.SetInteger("mediumAttackType", 1);
+                            CheckAndSetStationary();
+                            StartCoroutine(Lunge(transform.right, 5.0f, 0.2f));
+
+                        }
+                        else if (move.x < 0.0f) // do back attack
+                        {
+                            animator.SetInteger("mediumAttackType", 2);
+                            CheckAndSetStationary();
+                        }
+                    }
+                    else // is facing left
+                    {
+                        if (move.x > 0.0f) // do back attack
+                        {
+                            animator.SetInteger("mediumAttackType", 2);
+                            CheckAndSetStationary();
+                        }
+                        else if (move.x < 0.0f) // do lunge
+                        {
+                            animator.SetInteger("mediumAttackType", 1);
+                            CheckAndSetStationary();
+                            StartCoroutine(Lunge(transform.right, -5.0f, 0.2f));
+                        }
+                    }
+                }
+                else // do neutral attack
+                {
+                    animator.SetInteger("mediumAttackType", 3);
+                    CheckAndSetStationary();
+                }
+
+
+
+
+            }
             if (lightAttackAction.IsPressed() && typeAttack < 1)
             {
                 isAttacking = true;
@@ -203,8 +276,6 @@ public class PlayerController : MonoBehaviour
             if (lightAttackAction.IsPressed() && typeAttack < 1)
             {
                 animator.SetTrigger("isLAttackingSTrigger");
-                isAttacking = true;
-                blocking = false;
                 typeAttack = 1;
                 lightAttackStage = 1;
                 if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
@@ -214,14 +285,43 @@ public class PlayerController : MonoBehaviour
                 }
             }
             
-        }
 
+        }
         if (lightAttackAction.WasReleasedThisFrame())
         {
             animator.SetBool("continueLightAttack", false);
         }
+        if (MediumAttackAction.WasReleasedThisFrame())
+        {
+            animator.SetInteger("mediumAttackType", 0);
+        }
     }
 
+    private void CheckAndSetStationary()
+    {
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            move.x = 0.0f;
+            move.y = 0.0f;
+        }
+    }
     #endregion
 
+
+    public IEnumerator Lunge(Vector2 direction, float distance, float duration)
+    {
+        Vector2 startPosition = transform.position;
+        Vector2 targetPosition = startPosition + (direction.normalized * distance);
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            transform.position = Vector2.Lerp(startPosition, targetPosition, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Snap exactly to target at the end (optional)
+        transform.position = targetPosition;
+    }
 }

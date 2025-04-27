@@ -21,6 +21,7 @@ public class EnemyGeneral : MonoBehaviour
 
     private const string HIT_PARAM = "isHit";
     private const string PLAYER_LIGHT1_HITBOX = "playerHitboxLight1";
+    private const string PLAYER_MEDIUM_HITBOX = "PlayerHitboxMedium";
 
     [Header("Health")]
     public int maxHealth = 3;
@@ -139,6 +140,10 @@ public class EnemyGeneral : MonoBehaviour
         if(collision.gameObject.tag == PLAYER_LIGHT1_HITBOX && m_Animator.GetBool("dying") == false)
         {
             changeHealth(-1);
+        }
+        else if (collision.gameObject.tag == PLAYER_MEDIUM_HITBOX && m_Animator.GetBool("dying") == false)
+        {
+            changeHealth(-3);
         }
     }
 

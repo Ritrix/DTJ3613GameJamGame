@@ -6,6 +6,7 @@ TagManager:
   tags:
   - playerHitboxLight1
   - basicEnemyAttackHitbox
+  - PlayerHitboxMedium
   layers:
   - Default
   - TransparentFX
