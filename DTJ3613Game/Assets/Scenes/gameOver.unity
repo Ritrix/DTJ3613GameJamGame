@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 1413511134}
   - component: {fileID: 1413511136}
   - component: {fileID: 1413511135}
+  - component: {fileID: 1413511137}
   m_Layer: 5
   m_Name: gameOverText
   m_TagString: Untagged
@@ -438,6 +439,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413511133}
   m_CullTransparentMesh: 1
+--- !u!114 &1413511137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413511133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc81645243071048b831b6567d3aae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TextComponent: {fileID: 1413511135}
 --- !u!1 &1487571363
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +692,6 @@ GameObject:
   - component: {fileID: 1840867365}
   - component: {fileID: 1840867364}
   - component: {fileID: 1840867363}
-  - component: {fileID: 1840867366}
   m_Layer: 5
   m_Name: retryButton
   m_TagString: Untagged
@@ -750,7 +763,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1840867366}
+      - m_Target: {fileID: 1413511137}
         m_TargetAssemblyTypeName: gameOver, Assembly-CSharp
         m_MethodName: retry
         m_Mode: 1
@@ -800,18 +813,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840867361}
   m_CullTransparentMesh: 1
---- !u!114 &1840867366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840867361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc81645243071048b831b6567d3aae3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2023028947
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,4 +53,11 @@ public class UIHandler : MonoBehaviour
         m_waveLabel = uiDocument.rootVisualElement.Q<Label>("enemiesRemainingLabel");
         m_waveLabel.text = text;
     }
+
+    public void SetEnemiesNameLabelText(string text)
+    {
+        UIDocument uiDocument = GetComponent<UIDocument>();
+        m_waveLabel = uiDocument.rootVisualElement.Q<Label>("EnemyNameLabel");
+        m_waveLabel.text = text;
+    }
 }

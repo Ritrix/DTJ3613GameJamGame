@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EnemyGeneral : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class EnemyGeneral : MonoBehaviour
     public int maxHealth = 3;
     int currentHealth;
 
+    private int plebNumber;
+
     public void SetPlayer(GameObject playerObject)
     {
         player = playerObject;
@@ -32,6 +35,7 @@ public class EnemyGeneral : MonoBehaviour
 
     private void Start()
     {
+        plebNumber = Random.Range(1, 1000);
         currentHealth = maxHealth;
         m_Animator.SetBool("dying", false);
     }
@@ -168,6 +172,7 @@ public class EnemyGeneral : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHandler.instance.SetEnemyHealthValue(currentHealth / (float)maxHealth);
+        UIHandler.instance.SetEnemiesNameLabelText("Pleb #" + plebNumber + ":");
 
         if (currentHealth <= 0)
         {
