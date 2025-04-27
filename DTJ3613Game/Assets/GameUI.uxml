@@ -7,6 +7,7 @@
                     <ui:VisualElement name="HealthBar" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/healthBar.png?fileID=2800000&amp;guid=83d3b736fa5522545a2269ef8f5b0eb7&amp;type=3#healthBar&quot;);" />
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:Label text="Label" name="WaveLabel" style="left: 5%; font-size: 16px; -unity-font-style: bold; color: rgb(0, 0, 0);" />
         </ui:VisualElement>
         <ui:VisualElement name="EnemyHealthBarBackground" style="flex-grow: 0; width: 20%; height: 20%; -unity-background-scale-mode: scale-to-fit; right: 0%; background-position-x: center 0; flex-direction: column; flex-wrap: nowrap; left: auto; position: absolute; top: 0%;">
             <ui:Label text="Enemy Health:" style="left: 5%; color: rgb(0, 0, 0); -unity-font-style: bold; font-size: 16px;" />
@@ -15,6 +16,7 @@
                     <ui:VisualElement name="EnemyHealthBar" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/healthBar.png?fileID=2800000&amp;guid=83d3b736fa5522545a2269ef8f5b0eb7&amp;type=3#healthBar&quot;);" />
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:Label text="Label" name="enemiesRemainingLabel" style="left: 5%; font-size: 16px; -unity-font-style: bold; color: rgb(0, 0, 0);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

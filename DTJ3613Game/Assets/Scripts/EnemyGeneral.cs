@@ -104,6 +104,7 @@ public class EnemyGeneral : MonoBehaviour
         if (message == "deleteEnemy")
         {
             Destroy(gameObject);
+            enemySpawner.enemiesDefeated++;
         }
 
 

@@ -175,9 +175,9 @@ MonoBehaviour:
   m_Animator: {fileID: 420356072277117377}
   player: {fileID: 0}
   speed: 5
-  aggroDistance: 40
+  aggroDistance: 100
   separationDistance: 2
-  reachThreshold: 0.05
+  reachThreshold: 3
   maxHealth: 3
 --- !u!50 &6482853763801103448
 Rigidbody2D:

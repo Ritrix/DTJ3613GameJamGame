@@ -6,14 +6,16 @@ public class enemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private int enemiesToSpawn = 5;
+    private int enemiesToSpawn = 5;
     [SerializeField] private float minSpawnInterval = 1f;
     [SerializeField] private float maxSpawnInterval = 3f;
     private bool waveStart;
 
     private int enemiesSpawned;
     private bool isSpawning = false;
-    private int enemiesDefeated;
+    public static int enemiesDefeated;
+
+
 
     
 
@@ -22,11 +24,7 @@ public class enemySpawner : MonoBehaviour
         waveStart = true;
         StartCoroutine(SpawnWave());
         enemiesDefeated = 0;
-    }
-
-    public void enemiesKilled()
-    {
-        enemiesDefeated++;
+        UIHandler.instance.SetWaveLabelText("Wave: " + GameManager.Instance.currentWave);
     }
 
     private IEnumerator SpawnWave()
@@ -37,7 +35,7 @@ public class enemySpawner : MonoBehaviour
             waveStart = false;
         }
 
-        enemiesToSpawn = 3 + (GameManager.Instance.currentWave * 2); // 👈 Scale enemies with wave
+        enemiesToSpawn = 3 + (GameManager.Instance.currentWave * 2); // Scale enemies with wave
         enemiesSpawned = 0;
         isSpawning = true;
 
@@ -50,16 +48,19 @@ public class enemySpawner : MonoBehaviour
         }
 
         isSpawning = false;
-        GameManager.Instance.currentWave++;
-        GameManager.Instance.OpenShop();
     }
 
     private void Update()
     {
-        if(enemiesDefeated>= enemiesToSpawn && !isSpawning)
+        if (enemiesDefeated>= enemiesToSpawn && !isSpawning)
         {
             StartCoroutine(EndWave());
         }
+    }
+
+    private void FixedUpdate()
+    {
+        UIHandler.instance.SetEnemiesRemainingLabelText("Enemies Remaining: " + (enemiesToSpawn - enemiesDefeated));
     }
 
 
@@ -74,7 +75,11 @@ public class enemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+
+
+        Vector3 randomOffset = new Vector3(0, Random.Range(-3f, 3f), 0);
+
+        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position + randomOffset, Quaternion.identity);
 
         // Give enemy the player reference
         EnemyGeneral enemy = newEnemy.GetComponent<EnemyGeneral>();
