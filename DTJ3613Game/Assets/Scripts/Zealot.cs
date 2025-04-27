@@ -11,6 +11,7 @@ public class Zealot : MonoBehaviour
     private bool isAttacking = false;
     private bool stun = false;
     public int baseGoldReward = 1;
+    public float projectileSpeed = 300f;
 
     [Header("movement")]
     public float speed = 5.0f;
@@ -27,7 +28,7 @@ public class Zealot : MonoBehaviour
     private const string PLAYER_MEDIUM_HITBOX = "PlayerHitboxMedium";
 
     [Header("Health")]
-    public int maxHealth = 3;
+    public int maxHealth = 5;
     int currentHealth;
 
     private int plebNumber;
@@ -44,6 +45,8 @@ public class Zealot : MonoBehaviour
     [Header("Pitch Variation")]
     public float minPitch = 0.95f;
     public float maxPitch = 1.05f;
+
+    
 
     public void PlaySound(string sound)
     {
@@ -154,7 +157,6 @@ public class Zealot : MonoBehaviour
     private IEnumerator AttackAfterDelay()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(0.5f);
 
         if (!stun)
         {
@@ -178,12 +180,12 @@ public class Zealot : MonoBehaviour
         if (player.transform.position.x < transform.position.x)
         {
             // Player is to the left
-            projectile.launch(Vector2.left, 300);
+            projectile.launch(Vector2.left, projectileSpeed);
         }
         else
         {
             // Player is to the right
-            projectile.launch(Vector2.right, 300);
+            projectile.launch(Vector2.right, projectileSpeed);
         }
         
     }

@@ -299,10 +299,11 @@ MonoBehaviour:
   m_Animator: {fileID: 420356072277117377}
   player: {fileID: 0}
   baseGoldReward: 10
+  projectileSpeed: 600
   speed: 3
   aggroDistance: 100
   separationDistance: 20
-  reachThreshold: 0.05
+  reachThreshold: 1
   minBounds: {x: -27.6, y: -10.8}
   maxBounds: {x: 26.34, y: 2.25}
   maxHealth: 5

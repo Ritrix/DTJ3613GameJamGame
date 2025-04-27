@@ -230,6 +230,11 @@ public class PlayerController : MonoBehaviour
             changeHealth(-1);
             animator.SetTrigger("playerHurt");
         }
+        if (collision.gameObject.tag == "ZealotKnife" && animator.GetBool("dying") == false)
+        {
+            changeHealth(-3);
+            animator.SetTrigger("playerHurt");
+        }
     }
 
     #region private custom functions

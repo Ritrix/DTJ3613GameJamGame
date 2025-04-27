@@ -13,6 +13,17 @@ public class ProjectileZealot : MonoBehaviour
     public void launch(Vector2 direction, float force)
     {
         rigidbody2d.AddForce(direction * force);
+
+        if (direction.x > 0)
+        {
+            // Facing right
+            transform.localScale = new Vector3(1f, 1f, 1f); // Reset scale for right direction
+        }
+        else if (direction.x < 0)
+        {
+            // Facing left
+            transform.localScale = new Vector3(-1f, 1f, 1f); // Flip scale for left direction
+        }
     }
 
     
