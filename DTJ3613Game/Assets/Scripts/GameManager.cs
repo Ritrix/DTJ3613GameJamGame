@@ -29,6 +29,6 @@ public class GameManager : MonoBehaviour
 
     public void OpenShop()
     {
-        //SceneManager.LoadScene("ShopScene");
+        SceneManager.LoadScene("ShopScene");
     }
 }
