@@ -62,6 +62,10 @@ public class EnemyGeneral : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance.currentWave > 20)
+        {
+            maxHealth += (int)(GameManager.Instance.currentWave / 5);
+        }
         damageModifier = GameManager.Instance.playerCurrentMaxDamage;
         plebNumber = Random.Range(1, 1000);
         currentHealth = maxHealth;
