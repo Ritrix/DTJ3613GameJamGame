@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Animator: {fileID: 420356072277117377}
   player: {fileID: 0}
   speed: 5
-  aggroDistance: 16
+  aggroDistance: 40
   separationDistance: 2
   reachThreshold: 0.05
   maxHealth: 3

@@ -25,6 +25,11 @@ public class EnemyGeneral : MonoBehaviour
     public int maxHealth = 3;
     int currentHealth;
 
+    public void SetPlayer(GameObject playerObject)
+    {
+        player = playerObject;
+    }
+
     private void Start()
     {
         currentHealth = maxHealth;
