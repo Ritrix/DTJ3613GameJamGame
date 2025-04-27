@@ -35,6 +35,38 @@ public class PlayerController : MonoBehaviour
     private bool stun;
     private bool canAttack = true; // can attack or not
 
+    [Header("Misc")]
+    public AudioClip[] whooshSounds;
+    public AudioClip[] hurtSounds;
+    public AudioClip deathSound;
+    public AudioSource audioSource;
+
+    [Header("Pitch Variation")]
+    public float minPitch = 0.95f;
+    public float maxPitch = 1.05f;
+
+    public void PlaySound(string sound)
+    {
+        if (audioSource != null )
+        {
+            if(sound == "whoosh" && whooshSounds.Length > 0)
+            {
+                int rand = Random.Range(0, whooshSounds.Length); // Pick random sound
+                audioSource.pitch = Random.Range(minPitch, maxPitch);   // Randomize pitch
+                audioSource.PlayOneShot(whooshSounds[rand]);
+            }
+            else if (sound == "hurt" && hurtSounds.Length > 0)
+            {
+                int rand = Random.Range(0, hurtSounds.Length); // Pick random sound
+                audioSource.pitch = Random.Range(minPitch, maxPitch);   // Randomize pitch
+                audioSource.PlayOneShot(hurtSounds[rand]);
+            }
+            else if (sound == "death")
+            {
+                audioSource.PlayOneShot(deathSound);
+            }
+        }
+    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -132,6 +164,18 @@ public class PlayerController : MonoBehaviour
             typeAttack = 0;
             animator.SetInteger("mediumAttackType", 0);
             StartCoroutine(attackEndLag(0.2f));
+        }
+        else if (message == "deathSound")
+        {
+            PlaySound("death");
+        }
+        else if (message == "hurtSound")
+        {
+            PlaySound("hurt");
+        }
+        else if (message == "whooshSound")
+        {
+            PlaySound("whoosh");
         }
 
 
