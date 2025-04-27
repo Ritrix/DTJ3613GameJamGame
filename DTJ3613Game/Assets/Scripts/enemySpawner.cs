@@ -106,5 +106,12 @@ public class enemySpawner : MonoBehaviour
         {
             enemy.SetPlayer(player);
         }
+
+        // Try to find an EnemyGeneralB script on the spawned enemy
+        Zealot enemyZealot = newEnemy.GetComponent<Zealot>();
+        if (enemyZealot != null)
+        {
+            enemyZealot.SetPlayer(player);
+        }
     }
 }

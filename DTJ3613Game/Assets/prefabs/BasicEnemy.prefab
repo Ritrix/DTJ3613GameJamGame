@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6222879173850784197}
   - component: {fileID: 27408860973926469}
   - component: {fileID: 593099816632768175}
-  - component: {fileID: 420356072277117377}
   - component: {fileID: 1099860383275997657}
   - component: {fileID: 6482853763801103448}
   - component: {fileID: 7920522898809819098}
+  - component: {fileID: 3753358242917425172}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -139,28 +139,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.4113774, y: 3.979455}
   m_EdgeRadius: 0
---- !u!95 &420356072277117377
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310536290122931012}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a052daa1b76726c4e8118d3278f96cc0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1099860383275997657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea1312490d876041b64113322322e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 420356072277117377}
+  m_Animator: {fileID: 3753358242917425172}
   player: {fileID: 0}
   baseGoldReward: 1
   speed: 5
@@ -313,6 +291,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &3753358242917425172
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310536290122931012}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03ab8a3964eaabc44a63d8feebd238e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2203802630459360970
 GameObject:
   m_ObjectHideFlags: 0
