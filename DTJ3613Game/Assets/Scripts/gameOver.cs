@@ -13,6 +13,7 @@ public class gameOver : MonoBehaviour
 
     public void retry()
     {
+        GameManager.Instance.ResetGame();
         SceneManager.LoadScene("mainMenu");
     }
 }

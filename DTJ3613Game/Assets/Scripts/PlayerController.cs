@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        maxHealth = GameManager.Instance.playerCurrentMaxHealth;
+        runSpeed = GameManager.Instance.playerCurrentMaxSpeed;
+
         originalPlayerScale = playerVisual.transform.localScale;
         animator = GetComponent<Animator>();
         moveAction.Enable();
@@ -49,6 +52,8 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         animator.SetBool("dying", false);
         currentComnbo = 0;
+
+
     }
 
     // Update is called once per frame

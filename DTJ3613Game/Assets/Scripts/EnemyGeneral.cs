@@ -32,6 +32,8 @@ public class EnemyGeneral : MonoBehaviour
 
     [SerializeField] private GameObject floatingTextPrefab;
 
+    private int damageModifier;
+
     public void SetPlayer(GameObject playerObject)
     {
         player = playerObject;
@@ -39,6 +41,7 @@ public class EnemyGeneral : MonoBehaviour
 
     private void Start()
     {
+        damageModifier = GameManager.Instance.playerCurrentMaxDamage;
         plebNumber = Random.Range(1, 1000);
         currentHealth = maxHealth;
         m_Animator.SetBool("dying", false);
@@ -142,12 +145,12 @@ public class EnemyGeneral : MonoBehaviour
     {
         if(collision.gameObject.tag == PLAYER_LIGHT1_HITBOX && m_Animator.GetBool("dying") == false)
         {
-            ShowFloatingText("1", Color.red, new Vector3(-1, 1, 0));
+            ShowFloatingText((1 + damageModifier).ToString(), Color.red, new Vector3(-1, 1, 0));
             changeHealth(-1);
         }
         else if (collision.gameObject.tag == PLAYER_MEDIUM_HITBOX && m_Animator.GetBool("dying") == false)
         {
-            ShowFloatingText("3", Color.red, new Vector3(-1, 1, 0));
+            ShowFloatingText((3 + damageModifier).ToString(), Color.red, new Vector3(-1, 1, 0));
             changeHealth(-3);
         }
     }
@@ -182,7 +185,7 @@ public class EnemyGeneral : MonoBehaviour
             ComboSystem.Instance.RegisterHit();
         }
 
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth + amount - damageModifier, 0, maxHealth);
         UIHandler.instance.SetEnemyHealthValue(currentHealth / (float)maxHealth);
         UIHandler.instance.SetEnemiesNameLabelText("Pleb #" + plebNumber + ":");
 
@@ -196,19 +199,19 @@ public class EnemyGeneral : MonoBehaviour
             m_Animator.SetBool("dying", true);
         }
     }
-
+    /// <summary>
+    /// Shows floating text above the enemy
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="color"></param>
+    /// <param name="direction"></param>
     private void ShowFloatingText(string message, Color color, Vector3 direction)
     {
-        //if (Camera.main == null)
-        //{
-        //    Debug.LogError("Main camera not found!");
-        //    return;
-        //}
-        //Vector2 enemyPosition = transform.position;
-        //Vector2 spawnPosition = new Vector2(enemyPosition.x, enemyPosition.y + 4f);
-        //Vector2 screenPosition = Camera.main.WorldToScreenPoint(spawnPosition);
-        //GameObject textObj = Instantiate(floatingTextPrefab, screenPosition, Quaternion.identity, FindFirstObjectByType<Canvas>().transform);
-        //FloatingText floatingText = textObj.GetComponent<FloatingText>();
-        //floatingText.Initialize(message, color, direction);
+        Vector2 enemyPosition = transform.position;
+        Vector2 spawnPosition = new Vector2(enemyPosition.x, enemyPosition.y + 4f);
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(spawnPosition);
+        GameObject textObj = Instantiate(floatingTextPrefab, screenPosition, Quaternion.identity, FindFirstObjectByType<Canvas>().transform);
+        FloatingText floatingText = textObj.GetComponent<FloatingText>();
+        floatingText.Initialize(message, color, direction);
     }
 }

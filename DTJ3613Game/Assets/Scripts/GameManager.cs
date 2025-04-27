@@ -7,6 +7,15 @@ public class GameManager : MonoBehaviour
 
     public int currentWave = 1;
     public int playerGold = 0;
+    public int playerMaxHealth = 20;
+    public int playerSpeedMax = 16;
+    public int playerDamageMax = 3;
+    
+    public int playerCurrentMaxHealth = 5;
+    public int playerCurrentMaxSpeed = 8;
+    public int playerCurrentMaxDamage = 0;
+
+    public int currentPurchaseMod = 0;
 
     private void Awake()
     {
@@ -36,5 +45,33 @@ public class GameManager : MonoBehaviour
     {
         playerGold += amount;
         Debug.Log("Gold: " + playerGold);
+    }
+
+    public void ResetGame()
+    {
+        playerCurrentMaxHealth = 5;
+        playerCurrentMaxSpeed = 8;
+        playerCurrentMaxDamage = 0;
+        currentWave = 1;
+        playerGold = 0;
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void IncreaseHealth(int amount)
+    {
+        playerMaxHealth += amount;
+        Debug.Log("Player Max Health: " + playerMaxHealth);
+    }
+
+    public void IncreaseSpeed(int amount)
+    {
+        playerSpeedMax += amount;
+        Debug.Log("Player Speed: " + playerSpeedMax);
+    }
+
+    public void IncreaseDamage(int amount)
+    {
+        playerDamageMax += amount;
+        Debug.Log("Player Damage: " + playerDamageMax);
     }
 }
