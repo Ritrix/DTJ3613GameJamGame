@@ -174,11 +174,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 420356072277117377}
   player: {fileID: 0}
+  baseGoldReward: 1
   speed: 5
   aggroDistance: 100
   separationDistance: 2
   reachThreshold: 3
   maxHealth: 3
+  floatingTextPrefab: {fileID: 4614387222304839890, guid: 09a92aced92b9d24984066ff6c724424, type: 3}
 --- !u!50 &6482853763801103448
 Rigidbody2D:
   serializedVersion: 5

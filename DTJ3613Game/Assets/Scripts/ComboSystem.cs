@@ -10,6 +10,8 @@ public class ComboSystem : MonoBehaviour
     private int currentCombo = 0;
     private float comboTimer = 0f;
 
+    [SerializeField] private ComboUI comboUI;
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,6 +30,7 @@ public class ComboSystem : MonoBehaviour
                 ResetCombo();
             }
         }
+        UIHandler.instance.SetEnemiesRemainingLabelText("Gold: " + GameManager.Instance.playerGold);
     }
 
     public void RegisterHit()
@@ -35,7 +38,9 @@ public class ComboSystem : MonoBehaviour
         currentCombo++;
         comboTimer = comboResetTime;
 
-        // OPTIONAL: Update combo UI here!
+        if (comboUI != null)
+            comboUI.UpdateCombo(currentCombo);
+
         Debug.Log($"Combo: {currentCombo}");
     }
 
@@ -49,7 +54,9 @@ public class ComboSystem : MonoBehaviour
         currentCombo = 0;
         comboTimer = 0f;
 
-        // OPTIONAL: Update combo UI here!
+        if (comboUI != null)
+            comboUI.UpdateCombo(0);
+
         Debug.Log("Combo reset.");
     }
 }

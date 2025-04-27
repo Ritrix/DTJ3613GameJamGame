@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private bool stun;
 
-    private int lightAttackStage;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,7 +47,6 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
         isAttacking = false;
         currentHealth = maxHealth;
-        lightAttackStage = 0;
         animator.SetBool("dying", false);
         currentComnbo = 0;
     }
@@ -263,7 +261,6 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetTrigger("isLAttackingSTrigger");
                 typeAttack = 1;
-                lightAttackStage = 1;
                 if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
                 {
                     move.x = 0.0f;
