@@ -8,4 +8,9 @@ public class mainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("BackStory");
     }
+
+    public void tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 }

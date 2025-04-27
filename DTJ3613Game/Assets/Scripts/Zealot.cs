@@ -68,7 +68,14 @@ public class Zealot : MonoBehaviour
 
     private void Start()
     {
+        maxHealth = Random.Range(5, 7);// Scale health with wave
+
+        if (GameManager.Instance.currentWave > 20)
+        {
+            maxHealth += (int)(GameManager.Instance.currentWave/5);
+        }
         damageModifier = GameManager.Instance.playerCurrentMaxDamage;
+
         plebNumber = Random.Range(1, 1000);
         currentHealth = maxHealth;
         m_Animator.SetBool("dying", false);

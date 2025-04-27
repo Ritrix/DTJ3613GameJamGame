@@ -1237,6 +1237,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Light Attack
       m_Flags: 0
+    - m_Name: 
+      m_Id: 887b2672-a26e-498e-beab-dc9c72d47940
+      m_Path: <Keyboard>/j
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Light Attack
+      m_Flags: 0
     m_Flags: 0
   MediumAttackAction:
     m_Name: Medium Attack
@@ -1249,6 +1257,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 28c59d71-bef6-4529-881f-71c703a6885d
       m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Medium Attack
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 5c32da6e-b7e2-4cf7-b43e-cdd6491791e0
+      m_Path: <Keyboard>/k
       m_Interactions: 
       m_Processors: 
       m_Groups: 

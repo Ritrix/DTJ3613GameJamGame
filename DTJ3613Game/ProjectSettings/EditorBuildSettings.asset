@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BackStory.unity
     guid: 13c4667ff52cbc042b862870b12ccd3a
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 4bc67fa9d98c6564484ce34e50a29da1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
