@@ -181,7 +181,7 @@ MonoBehaviour:
 
 
     You can
-    also do a heavy attack by pressing k along with a direction to do up to 3 different
+    also do a heavy attack by pressing K along with a direction to do up to 3 different
     distinctive moves as seen to the left. Heavy attacks can interrupt any light
     attack, but cannot interrupt themselves nor can light attacks interrupt a heavy.
 
