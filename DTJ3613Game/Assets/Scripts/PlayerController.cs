@@ -195,6 +195,8 @@ public class PlayerController : MonoBehaviour
         {
             if (lightAttackAction.IsPressed() && typeAttack < 1)
             {
+                isAttacking = true;
+                blocking = false;
                 animator.SetBool("continueLightAttack", true);
             }
             // stop moving when light attack pressed
