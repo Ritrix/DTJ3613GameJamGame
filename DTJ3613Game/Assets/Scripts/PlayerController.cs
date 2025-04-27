@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     float damageCooldown;
 
 
-    public bool blocking;
+
     private bool stun;
 
     private int lightAttackStage;
@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
         isAttacking = false;
         currentHealth = maxHealth;
-        blocking = false;
         lightAttackStage = 0;
         animator.SetBool("dying", false);
     }
@@ -165,15 +164,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "basicEnemyAttackHitbox" && animator.GetBool("dying") == false)
         {
-            if (!blocking)
-            {
-                changeHealth(-1);
-                animator.SetTrigger("playerHurt");
-            }
-            else
-            {
-
-            }
+            changeHealth(-1);
+            animator.SetTrigger("playerHurt");
         }
     }
 
@@ -185,15 +177,10 @@ public class PlayerController : MonoBehaviour
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             animator.SetBool("isWalking", true);
-            blocking = false;
         }
         else
         {
             animator.SetBool("isWalking", false);
-            if (!isAttacking)
-            {
-                blocking = true;
-            }
         }
 
         // change player direction
@@ -219,7 +206,6 @@ public class PlayerController : MonoBehaviour
             if (MediumAttackAction.IsPressed() && typeAttack < 2)
             {
                 isAttacking = true;
-                blocking = false;
                 typeAttack = 2;
 
                 if (!Mathf.Approximately(move.x, 0.0f))
@@ -269,7 +255,6 @@ public class PlayerController : MonoBehaviour
             if (lightAttackAction.IsPressed() && typeAttack < 1)
             {
                 isAttacking = true;
-                blocking = false;
                 animator.SetBool("continueLightAttack", true);
             }
             // stop moving when light attack pressed
