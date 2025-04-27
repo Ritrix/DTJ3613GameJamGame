@@ -25,13 +25,11 @@ public class ShopController : MonoBehaviour
         increaseDamagePriceTextBox = GameObject.Find("IncreaseDamagePrice").GetComponent<TMP_Text>();
         gold = GameObject.Find("GoldAmount").GetComponent<TMP_Text>();
 
-        HealthIncreaseCost = 75 * GameManager.Instance.currentPurchaseMod;
-        SpeedIncreaseCost = 75 * GameManager.Instance.currentPurchaseMod;
-        DamageIncreaseCost = 150 * GameManager.Instance.currentPurchaseMod;
+        
+        
+        
 
-        increaseHealthPriceTextBox.text = HealthIncreaseCost.ToString();
-        increaseSpeedPriceTextBox.text = SpeedIncreaseCost.ToString();
-        increaseDamagePriceTextBox.text = DamageIncreaseCost.ToString();
+        
 
         if (GameManager.Instance.playerCurrentMaxHealth >= GameManager.Instance.playerMaxHealth)
         {
@@ -52,6 +50,7 @@ public class ShopController : MonoBehaviour
         {
             GameManager.Instance.playerGold -= HealthIncreaseCost;
             GameManager.Instance.IncreaseHealth(1);
+            GameManager.Instance.currentPurchaseMod++;
         }
     }
 
@@ -61,6 +60,7 @@ public class ShopController : MonoBehaviour
         {
             GameManager.Instance.playerGold -= SpeedIncreaseCost;
             GameManager.Instance.IncreaseSpeed(1);
+            GameManager.Instance.currentPurchaseMod++;
         }
     }
 
@@ -70,12 +70,20 @@ public class ShopController : MonoBehaviour
         {
             GameManager.Instance.playerGold -= DamageIncreaseCost;
             GameManager.Instance.IncreaseDamage(1);
+            GameManager.Instance.currentPurchaseMod++;
         }
     }
 
     private void FixedUpdate()
     {
+        Debug.Log("purmod: " + GameManager.Instance.currentPurchaseMod);
         gold.text = "Gold: " + GameManager.Instance.playerGold.ToString();
+        HealthIncreaseCost = 75 * GameManager.Instance.currentPurchaseMod;
+        SpeedIncreaseCost = 75 * GameManager.Instance.currentPurchaseMod;
+        DamageIncreaseCost = 150 * GameManager.Instance.currentPurchaseMod;
+        increaseHealthPriceTextBox.text = HealthIncreaseCost.ToString() + "g";
+        increaseSpeedPriceTextBox.text = SpeedIncreaseCost.ToString() + "g";
+        increaseDamagePriceTextBox.text = DamageIncreaseCost.ToString() + "g";
     }
 
     public void NextWave()

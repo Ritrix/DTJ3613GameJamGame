@@ -33,15 +33,16 @@ public class PlayerController : MonoBehaviour
     public int currentComnbo = 0; // current combo stage
 
     private bool stun;
+    private bool canAttack = true; // can attack or not
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         maxHealth = GameManager.Instance.playerCurrentMaxHealth;
         runSpeed = GameManager.Instance.playerCurrentMaxSpeed;
-
         originalPlayerScale = playerVisual.transform.localScale;
         animator = GetComponent<Animator>();
         moveAction.Enable();
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         animator.SetBool("dying", false);
         currentComnbo = 0;
-
+        canAttack = true;
 
     }
 
@@ -65,8 +66,14 @@ public class PlayerController : MonoBehaviour
         // function to handle all movement related items and controls
         movement();
 
+
         // function to handle all attack related items and controls
-        attacks();
+        if (canAttack)
+        {
+            attacks();
+        }
+
+
 
         if (isInvincible)
         {
@@ -86,8 +93,10 @@ public class PlayerController : MonoBehaviour
     {
         if (message == "LightAttackEnd")
         {
+            canAttack = false;
             isAttacking = false;
             typeAttack = 0;
+            StartCoroutine(attackEndLag(0.1f));
         }
         else if(message == "stunEnd")
         {
@@ -102,21 +111,27 @@ public class PlayerController : MonoBehaviour
         }
         else if (message == "MediumAttackFend")
         {
+            canAttack = false;
             isAttacking = false;
             typeAttack = 0;
             animator.SetInteger("mediumAttackType", 0);
+            StartCoroutine(attackEndLag(0.5f));
         }
         else if (message == "MediumAttackNend")
         {
+            canAttack = false;
             isAttacking = false;
             typeAttack = 0;
             animator.SetInteger("mediumAttackType", 0);
+            StartCoroutine(attackEndLag(0.4f));
         }
         else if (message == "MediumAttackBend")
         {
+            canAttack = false;
             isAttacking = false;
             typeAttack = 0;
             animator.SetInteger("mediumAttackType", 0);
+            StartCoroutine(attackEndLag(0.2f));
         }
 
 
@@ -295,6 +310,12 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+
+    public IEnumerator attackEndLag(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canAttack = true;
+    }
 
     public IEnumerator Lunge(Vector2 direction, float distance, float duration)
     {
