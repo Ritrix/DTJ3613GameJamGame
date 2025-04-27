@@ -30,7 +30,7 @@ public class ComboSystem : MonoBehaviour
                 ResetCombo();
             }
         }
-        UIHandler.instance.SetEnemiesRemainingLabelText("Gold: " + GameManager.Instance.playerGold);
+        UIHandler.instance.SetGoldLabelText("Gold: " + GameManager.Instance.playerGold);
     }
 
     public void RegisterHit()
