@@ -10,6 +10,7 @@ public class EnemyGeneral : MonoBehaviour
     private Coroutine attackCoroutine;
     private bool isAttacking = false;
     private bool stun = false;
+    public int baseGoldReward = 1;
 
     [Header("movement")]
     public float speed = 5.0f;
@@ -28,6 +29,8 @@ public class EnemyGeneral : MonoBehaviour
     int currentHealth;
 
     private int plebNumber;
+
+    [SerializeField] private GameObject floatingTextPrefab;
 
     public void SetPlayer(GameObject playerObject)
     {
@@ -139,10 +142,12 @@ public class EnemyGeneral : MonoBehaviour
     {
         if(collision.gameObject.tag == PLAYER_LIGHT1_HITBOX && m_Animator.GetBool("dying") == false)
         {
+            ShowFloatingText("1", Color.red, new Vector3(-1, 1, 0));
             changeHealth(-1);
         }
         else if (collision.gameObject.tag == PLAYER_MEDIUM_HITBOX && m_Animator.GetBool("dying") == false)
         {
+            ShowFloatingText("3", Color.red, new Vector3(-1, 1, 0));
             changeHealth(-3);
         }
     }
@@ -171,8 +176,10 @@ public class EnemyGeneral : MonoBehaviour
     {
         if (amount < 0)
         {
+
             stun = true;
             m_Animator.SetTrigger(HIT_PARAM);
+            ComboSystem.Instance.RegisterHit();
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
@@ -181,9 +188,27 @@ public class EnemyGeneral : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            int goldToGive = baseGoldReward * Mathf.Max(ComboSystem.Instance.GetCurrentCombo(), 1);
+            ShowFloatingText("+" + goldToGive.ToString(), new Color(1f, 0.84f, 0f), new Vector3(1, 1, 0));
+            GameManager.Instance.AddGold(goldToGive);
             stun = true;
             m_Animator.SetTrigger("isDead");
             m_Animator.SetBool("dying", true);
         }
+    }
+
+    private void ShowFloatingText(string message, Color color, Vector3 direction)
+    {
+        //if (Camera.main == null)
+        //{
+        //    Debug.LogError("Main camera not found!");
+        //    return;
+        //}
+        //Vector2 enemyPosition = transform.position;
+        //Vector2 spawnPosition = new Vector2(enemyPosition.x, enemyPosition.y + 4f);
+        //Vector2 screenPosition = Camera.main.WorldToScreenPoint(spawnPosition);
+        //GameObject textObj = Instantiate(floatingTextPrefab, screenPosition, Quaternion.identity, FindFirstObjectByType<Canvas>().transform);
+        //FloatingText floatingText = textObj.GetComponent<FloatingText>();
+        //floatingText.Initialize(message, color, direction);
     }
 }
