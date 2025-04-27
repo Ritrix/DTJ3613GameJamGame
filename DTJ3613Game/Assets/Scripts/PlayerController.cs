@@ -24,13 +24,15 @@ public class PlayerController : MonoBehaviour
     int currentHealth;
     public int health { get { return currentHealth; } }
     // damage cooldown
-    public float timeInvincible = 2.0f;
+    public float timeInvincible = 1.0f;
     bool isInvincible;
     float damageCooldown;
 
 
     public bool blocking;
     private bool stun;
+
+    private int lightAttackStage;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
         currentHealth = maxHealth;
         blocking = false;
+        lightAttackStage = 0;
+        animator.SetBool("dying", false);
     }
 
     // Update is called once per frame
@@ -85,7 +89,12 @@ public class PlayerController : MonoBehaviour
             typeAttack = 0;
             stun = false;
         }
-            
+        else if (message == "PlayerDeath")
+        {
+            Debug.Log("Player died!");
+            SceneManager.LoadScene("gameOver");
+        }
+
 
     }
 
@@ -122,8 +131,8 @@ public class PlayerController : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Debug.Log("Player died!");
-            SceneManager.LoadScene("gameOver");
+            animator.SetTrigger("isDead");
+            animator.SetBool("dying", true); 
         }
     }
 
@@ -133,7 +142,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "basicEnemyAttackHitbox")
+        if (collision.gameObject.tag == "basicEnemyAttackHitbox" && animator.GetBool("dying") == false)
         {
             if (!blocking)
             {
@@ -184,6 +193,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!stun)
         {
+            if (lightAttackAction.IsPressed() && typeAttack < 1)
+            {
+                animator.SetBool("continueLightAttack", true);
+            }
             // stop moving when light attack pressed
             if (lightAttackAction.IsPressed() && typeAttack < 1)
             {
@@ -191,12 +204,19 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 blocking = false;
                 typeAttack = 1;
+                lightAttackStage = 1;
                 if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
                 {
                     move.x = 0.0f;
                     move.y = 0.0f;
                 }
             }
+            
+        }
+
+        if (lightAttackAction.WasReleasedThisFrame())
+        {
+            animator.SetBool("continueLightAttack", false);
         }
     }
 

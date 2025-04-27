@@ -28,6 +28,7 @@ public class EnemyGeneral : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        m_Animator.SetBool("dying", false);
     }
 
     private void Update()
@@ -125,7 +126,7 @@ public class EnemyGeneral : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == PLAYER_LIGHT1_HITBOX)
+        if(collision.gameObject.tag == PLAYER_LIGHT1_HITBOX && m_Animator.GetBool("dying") == false)
         {
             changeHealth(-1);
         }
@@ -166,6 +167,7 @@ public class EnemyGeneral : MonoBehaviour
         {
             stun = true;
             m_Animator.SetTrigger("isDead");
+            m_Animator.SetBool("dying", true);
         }
     }
 }
